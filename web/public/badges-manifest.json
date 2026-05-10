@@ -1,0 +1,102 @@
+[
+  {
+    "level": 1,
+    "name": "Newcomer",
+    "path": "/badges/lvl1.png"
+  },
+  {
+    "level": 2,
+    "name": "Sparked",
+    "path": "/badges/lvl2.png"
+  },
+  {
+    "level": 3,
+    "name": "Triad",
+    "path": "/badges/lvl3.png"
+  },
+  {
+    "level": 4,
+    "name": "Quadrant",
+    "path": "/badges/lvl4.png"
+  },
+  {
+    "level": 5,
+    "name": "Initiate",
+    "path": "/badges/lvl5.png"
+  },
+  {
+    "level": 6,
+    "name": "Lattice",
+    "path": "/badges/lvl6.png"
+  },
+  {
+    "level": 7,
+    "name": "Mechanist",
+    "path": "/badges/lvl7.png"
+  },
+  {
+    "level": 8,
+    "name": "Tessellated",
+    "path": "/badges/lvl8.png"
+  },
+  {
+    "level": 9,
+    "name": "Gemborn",
+    "path": "/badges/lvl9.png"
+  },
+  {
+    "level": 10,
+    "name": "Block Builder",
+    "path": "/badges/lvl10.png"
+  },
+  {
+    "level": 11,
+    "name": "Cogsmith",
+    "path": "/badges/lvl11.png"
+  },
+  {
+    "level": 12,
+    "name": "Geargrand",
+    "path": "/badges/lvl12.png"
+  },
+  {
+    "level": 13,
+    "name": "Aegis",
+    "path": "/badges/lvl13.png"
+  },
+  {
+    "level": 14,
+    "name": "Compass",
+    "path": "/badges/lvl14.png"
+  },
+  {
+    "level": 15,
+    "name": "Resplendent",
+    "path": "/badges/lvl15.png"
+  },
+  {
+    "level": 16,
+    "name": "Aurora",
+    "path": "/badges/lvl16.png"
+  },
+  {
+    "level": 17,
+    "name": "Phoenix",
+    "path": "/badges/lvl17.png"
+  },
+  {
+    "level": 18,
+    "name": "Stellar",
+    "path": "/badges/lvl18.png"
+  },
+  {
+    "level": 19,
+    "name": "Heirloom",
+    "path": "/badges/lvl19.png"
+  },
+  {
+    "level": 20,
+    "name": "Base Maestro",
+    "path": "/badges/lvl20.png"
+  }
+]

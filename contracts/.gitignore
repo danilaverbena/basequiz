@@ -1,0 +1,9 @@
+.env
+.env.*
+!.env.example
+out/
+cache/
+broadcast/
+lib/forge-std/
+lib/openzeppelin-contracts/
+node_modules/

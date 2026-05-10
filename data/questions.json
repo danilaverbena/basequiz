@@ -1,0 +1,1025 @@
+{
+  "version": "1.0.0",
+  "totalQuestions": 100,
+  "topics": {
+    "base-chain":         { "label": "Base Chain",        "count": 20 },
+    "base-account":       { "label": "Base Account",      "count": 15 },
+    "base-app-miniapps":  { "label": "Base App & Mini Apps", "count": 15 },
+    "onchainkit":         { "label": "OnchainKit",        "count": 10 },
+    "usdc-base-pay":      { "label": "USDC & Base Pay",   "count": 10 },
+    "defi":               { "label": "DeFi on Base",      "count": 10 },
+    "farcaster-social":   { "label": "Farcaster & Social",  "count": 10 },
+    "tools-security":     { "label": "Tools & Security",  "count": 10 }
+  },
+  "questions": [
+
+    { "id": 1, "topic": "base-chain", "difficulty": "easy",
+      "question": "What is Base?",
+      "options": [
+        "A general-purpose Layer 1 blockchain",
+        "An Ethereum Layer 2 built on the OP Stack",
+        "A sidechain bridged to Bitcoin",
+        "A standalone proof-of-stake network"
+      ],
+      "correct": 1,
+      "explanation": "Base is an Ethereum Layer 2 (optimistic rollup) built on the Optimism OP Stack, incubated by Coinbase.",
+      "source": "https://docs.base.org/get-started/base"
+    },
+    { "id": 2, "topic": "base-chain", "difficulty": "easy",
+      "question": "Who incubated Base?",
+      "options": ["Binance", "Coinbase", "Kraken", "ConsenSys"],
+      "correct": 1,
+      "explanation": "Base was incubated by Coinbase and is part of the Optimism Superchain.",
+      "source": "https://docs.base.org/get-started/base"
+    },
+    { "id": 3, "topic": "base-chain", "difficulty": "easy",
+      "question": "What is Base's mainnet chain ID?",
+      "options": ["1", "10", "8453", "84532"],
+      "correct": 2,
+      "explanation": "Base Mainnet uses chain ID 8453. Base Sepolia testnet uses 84532.",
+      "source": "https://docs.base.org/base-chain/network-information/base-mainnet"
+    },
+    { "id": 4, "topic": "base-chain", "difficulty": "easy",
+      "question": "What is Base Sepolia's chain ID?",
+      "options": ["1", "11155111", "84532", "8453"],
+      "correct": 2,
+      "explanation": "Base Sepolia is the test network with chain ID 84532. Sepolia (Ethereum L1 testnet) is 11155111.",
+      "source": "https://docs.base.org/base-chain/network-information/base-sepolia-testnet"
+    },
+    { "id": 5, "topic": "base-chain", "difficulty": "easy",
+      "question": "Which native token pays for gas on Base?",
+      "options": ["USDC", "BASE", "ETH", "OP"],
+      "correct": 2,
+      "explanation": "Like most Ethereum L2s, Base uses ETH as the native gas token. There is no token called BASE.",
+      "source": "https://docs.base.org/base-chain/network-information/base-mainnet"
+    },
+    { "id": 6, "topic": "base-chain", "difficulty": "medium",
+      "question": "What is Base's block time approximately?",
+      "options": ["~200ms", "~2 seconds", "~12 seconds", "~1 minute"],
+      "correct": 1,
+      "explanation": "Base produces blocks every ~2 seconds, which is faster than Ethereum L1's 12s slot time.",
+      "source": "https://docs.base.org/base-chain/network-information/base-mainnet"
+    },
+    { "id": 7, "topic": "base-chain", "difficulty": "medium",
+      "question": "Which underlying technology stack does Base use?",
+      "options": ["Cosmos SDK", "Polygon CDK", "OP Stack", "ZK Stack"],
+      "correct": 2,
+      "explanation": "Base is built on the Optimism OP Stack and is part of the Optimism Superchain.",
+      "source": "https://docs.base.org/get-started/concepts"
+    },
+    { "id": 8, "topic": "base-chain", "difficulty": "medium",
+      "question": "What is the role of Base's sequencer?",
+      "options": [
+        "Validates ZK proofs of state transitions",
+        "Orders incoming transactions and produces L2 blocks",
+        "Approves bridge withdrawals",
+        "Hosts the public RPC endpoint only"
+      ],
+      "correct": 1,
+      "explanation": "The sequencer accepts user transactions, orders them, and produces L2 blocks; data is later posted to L1 for settlement.",
+      "source": "https://docs.base.org/base-chain/specs/protocol/consensus/derivation"
+    },
+    { "id": 9, "topic": "base-chain", "difficulty": "medium",
+      "question": "Where does Base post data for L1 settlement?",
+      "options": [
+        "Bitcoin via inscriptions",
+        "Ethereum mainnet (calldata + blobs)",
+        "Polygon PoS",
+        "A separate IPFS cluster"
+      ],
+      "correct": 1,
+      "explanation": "Base posts batched transaction data to Ethereum mainnet (calldata historically; blobs since EIP-4844) to inherit Ethereum's security.",
+      "source": "https://docs.base.org/base-chain/specs/protocol/consensus/derivation"
+    },
+    { "id": 10, "topic": "base-chain", "difficulty": "medium",
+      "question": "Which type of rollup is Base?",
+      "options": ["ZK rollup", "Optimistic rollup", "Validium", "Plasma chain"],
+      "correct": 1,
+      "explanation": "Base is an optimistic rollup using fault proofs to challenge invalid state transitions.",
+      "source": "https://docs.base.org/get-started/concepts"
+    },
+    { "id": 11, "topic": "base-chain", "difficulty": "easy",
+      "question": "What is the official block explorer for Base?",
+      "options": ["Etherscan", "BaseScan", "BscScan", "Blockchair"],
+      "correct": 1,
+      "explanation": "BaseScan (basescan.org) is Etherscan's branded explorer for Base. The Etherscan team operates it.",
+      "source": "https://docs.base.org/get-started/block-explorers"
+    },
+    { "id": 12, "topic": "base-chain", "difficulty": "medium",
+      "question": "Which hardfork introduced a configurable minimum base fee on Base?",
+      "options": ["Pectra Blob Schedule", "Jovian", "Cancun", "Granite"],
+      "correct": 1,
+      "explanation": "The Jovian hardfork introduced a configurable minimum base fee via SystemConfig and a DA footprint gas scalar.",
+      "source": "https://docs.base.org/base-chain/specs/upgrades/jovian/overview"
+    },
+    { "id": 13, "topic": "base-chain", "difficulty": "hard",
+      "question": "Which predeploy contract on Base exposes L1 attributes (block number, basefee) to L2 contracts?",
+      "options": ["L1Block", "L1MessageSender", "OptimismMintableERC20", "BaseChainConfig"],
+      "correct": 0,
+      "explanation": "The L1Block predeploy exposes the latest known L1 block attributes to L2 smart contracts.",
+      "source": "https://docs.base.org/base-chain/specs/protocol/consensus/derivation"
+    },
+    { "id": 14, "topic": "base-chain", "difficulty": "easy",
+      "question": "Are smart contracts on Base written in the same language as Ethereum L1?",
+      "options": [
+        "No, they use Move",
+        "No, they use Rust only",
+        "Yes — Solidity / Vyper, fully EVM-equivalent",
+        "Yes, but only a Base-specific dialect of Solidity"
+      ],
+      "correct": 2,
+      "explanation": "Base is EVM-equivalent: any Solidity or Vyper contract that compiles for EVM works on Base unchanged.",
+      "source": "https://docs.base.org/get-started/deploy-smart-contracts"
+    },
+    { "id": 15, "topic": "base-chain", "difficulty": "medium",
+      "question": "What is the typical canonical bridge withdrawal time from Base to Ethereum L1?",
+      "options": ["Instant", "~10 minutes", "~7 days (challenge period)", "~30 days"],
+      "correct": 2,
+      "explanation": "Native canonical withdrawals require the ~7-day challenge period typical of optimistic rollups. Third-party fast bridges shortcut this with liquidity.",
+      "source": "https://docs.base.org/base-chain/tokens/bridge-a-token-to-base"
+    },
+    { "id": 16, "topic": "base-chain", "difficulty": "medium",
+      "question": "What is the Optimism Superchain?",
+      "options": [
+        "A staking pool that secures all OP chains",
+        "A shared standard and interop layer for OP-Stack-based chains",
+        "A separate L1 chain by Optimism",
+        "Optimism's marketing term for sequencer redundancy"
+      ],
+      "correct": 1,
+      "explanation": "The Superchain is a shared standard and interop framework that lets multiple OP-Stack chains (Base, Optimism, Mode, etc.) share security and tooling.",
+      "source": "https://docs.base.org/get-started/concepts"
+    },
+    { "id": 17, "topic": "base-chain", "difficulty": "easy",
+      "question": "What is the canonical mainnet RPC endpoint provided by Base?",
+      "options": [
+        "https://mainnet.base.org",
+        "https://rpc.base.eth",
+        "https://base.optimism.io",
+        "https://base.coinbase.com/rpc"
+      ],
+      "correct": 0,
+      "explanation": "https://mainnet.base.org is the canonical public endpoint; https://sepolia.base.org is the testnet equivalent.",
+      "source": "https://docs.base.org/base-chain/network-information/base-mainnet"
+    },
+    { "id": 18, "topic": "base-chain", "difficulty": "hard",
+      "question": "What does the Pectra Blob Schedule hardfork on Base concern?",
+      "options": [
+        "Adoption schedule for Ethereum's increased blob count",
+        "Mandatory MEV-boost integration",
+        "Switch from optimistic to ZK proofs",
+        "Sunset of L1 calldata posting"
+      ],
+      "correct": 0,
+      "explanation": "The Pectra Blob Schedule is an optional hardfork that delays Base's adoption of Ethereum's increased blob count schedule.",
+      "source": "https://docs.base.org/base-chain/specs/upgrades/pectra-blob-schedule/overview"
+    },
+    { "id": 19, "topic": "base-chain", "difficulty": "medium",
+      "question": "Roughly what does a simple ETH transfer typically cost on Base mainnet?",
+      "options": ["A few dollars", "Cents to fractions of a cent", "Free", "Equal to Ethereum L1 gas"],
+      "correct": 1,
+      "explanation": "Base targets fractions of a cent to a few cents per simple transaction, depending on L1 blob price and demand.",
+      "source": "https://docs.base.org/get-started/base"
+    },
+    { "id": 20, "topic": "base-chain", "difficulty": "hard",
+      "question": "What did Base introduce on September 10, 2025?",
+      "options": [
+        "A switch from ETH to USDC for gas",
+        "A per-transaction maximum gas cap enforced by the chain",
+        "Mandatory KYC for all addresses",
+        "Permissionless sequencer rotation"
+      ],
+      "correct": 1,
+      "explanation": "On September 10, 2025 Base began enforcing a per-transaction gas cap to limit single-tx gas pressure on the network.",
+      "source": "https://docs.base.org/base-chain/network-information/block-building"
+    },
+
+    { "id": 21, "topic": "base-account", "difficulty": "easy",
+      "question": "What is Base Account?",
+      "options": [
+        "A custodial Coinbase exchange account",
+        "An ERC-4337 smart contract wallet with universal sign-in",
+        "A non-custodial seed-phrase wallet only",
+        "A native L1 wallet protocol"
+      ],
+      "correct": 1,
+      "explanation": "Base Account is an ERC-4337 smart contract wallet that supports universal sign-in (passkeys), batch transactions, and one-tap USDC payments via Base Pay.",
+      "source": "https://docs.base.org/base-account/overview/what-is-base-account"
+    },
+    { "id": 22, "topic": "base-account", "difficulty": "easy",
+      "question": "Which authentication method is central to Base Account onboarding?",
+      "options": ["12-word seed phrase", "Email + SMS 2FA", "Passkeys (FIDO2 / WebAuthn)", "Hardware wallet only"],
+      "correct": 2,
+      "explanation": "Base Account uses passkeys for sign-in — biometric / OS-level credentials that remove the friction of seed phrases.",
+      "source": "https://docs.base.org/base-account/overview/what-is-base-account"
+    },
+    { "id": 23, "topic": "base-account", "difficulty": "medium",
+      "question": "Which EIP standardises sending a batch of calls in one wallet RPC request?",
+      "options": ["EIP-712", "EIP-1271", "EIP-4337", "EIP-5792"],
+      "correct": 3,
+      "explanation": "EIP-5792 introduces wallet_sendCalls / wallet_getCallsStatus / wallet_getCapabilities for batch and capability-aware UX.",
+      "source": "https://docs.base.org/base-account/reference/core/provider-rpc-methods/wallet_sendCalls"
+    },
+    { "id": 24, "topic": "base-account", "difficulty": "medium",
+      "question": "What does the Spend Permissions capability enable?",
+      "options": [
+        "Letting an app pre-authorize recurring USDC charges from the user",
+        "Disabling all transaction history",
+        "Auto-bridging tokens from L1",
+        "Sending transactions without a signature"
+      ],
+      "correct": 0,
+      "explanation": "Spend Permissions let users grant a scoped, revocable allowance — the basis for USDC subscriptions in Base Pay.",
+      "source": "https://docs.base.org/base-account/reference/onchain-contracts/spend-permissions"
+    },
+    { "id": 25, "topic": "base-account", "difficulty": "medium",
+      "question": "What is a Base Account Sub Account?",
+      "options": [
+        "A second seed phrase for the wallet",
+        "An app-scoped sub-wallet with its own permissions",
+        "A read-only watch address",
+        "A delegate signer that controls the main wallet"
+      ],
+      "correct": 1,
+      "explanation": "Sub Accounts are app-specific scoped accounts under the main Base Account, useful for isolating risk per dApp.",
+      "source": "https://docs.base.org/base-account/framework-integrations/privy/sub-accounts"
+    },
+    { "id": 26, "topic": "base-account", "difficulty": "medium",
+      "question": "What does the paymasterService capability do in Base Account?",
+      "options": [
+        "Signs cheques for off-chain payment rails",
+        "Enables gas sponsorship for users via ERC-4337 paymaster web services",
+        "Mints test ETH on demand",
+        "Refunds gas after a failed transaction"
+      ],
+      "correct": 1,
+      "explanation": "paymasterService advertises ERC-4337 paymaster URLs so dApps can sponsor gas for end-users.",
+      "source": "https://docs.base.org/base-account/reference/core/capabilities/paymasterService"
+    },
+    { "id": 27, "topic": "base-account", "difficulty": "hard",
+      "question": "What does the auxiliaryFunds capability indicate?",
+      "options": [
+        "The wallet supports lending to other users",
+        "The wallet has access to funds beyond what is verifiable on-chain (e.g., custodial reserves)",
+        "The wallet was funded via a faucet",
+        "Funds are locked in a vault"
+      ],
+      "correct": 1,
+      "explanation": "auxiliaryFunds tells dApps the wallet (e.g., Coinbase Wallet) can pull from off-chain balances if needed.",
+      "source": "https://docs.base.org/base-account/reference/core/capabilities/auxiliaryFunds"
+    },
+    { "id": 28, "topic": "base-account", "difficulty": "medium",
+      "question": "Which RPC method queries a wallet's supported capabilities?",
+      "options": ["wallet_listCapabilities", "wallet_getCapabilities", "eth_capabilities", "eth_clientCaps"],
+      "correct": 1,
+      "explanation": "wallet_getCapabilities returns the set of capabilities (atomicBatch, paymasterService, auxiliaryFunds, etc.) for a given account.",
+      "source": "https://docs.base.org/base-account/reference/core/provider-rpc-methods/wallet_getCapabilities"
+    },
+    { "id": 29, "topic": "base-account", "difficulty": "medium",
+      "question": "Can a typical EOA (externally-owned account) submit batch transactions via EIP-5792?",
+      "options": [
+        "Yes, EOAs natively support batching",
+        "Only when using a hardware wallet",
+        "No — only smart wallets can; dApps must detect and fall back",
+        "Yes, but only on testnets"
+      ],
+      "correct": 2,
+      "explanation": "EOAs cannot atomically batch — only smart wallets (e.g., Base Account) can. Apps should call wallet_getCapabilities and gracefully fall back to sequential writes.",
+      "source": "https://docs.base.org/apps/quickstart/build-app"
+    },
+    { "id": 30, "topic": "base-account", "difficulty": "easy",
+      "question": "What is a Basename?",
+      "options": [
+        "A wallet's hash prefix",
+        "A human-readable identifier ending in .base for a Base Account",
+        "The on-chain reverse-resolver for ENS",
+        "A Coinbase username separate from the wallet"
+      ],
+      "correct": 1,
+      "explanation": "Basenames are human-readable .base identifiers tied to Base wallets — like ENS but native to Base.",
+      "source": "https://docs.base.org/base-account/basenames/basenames-faq"
+    },
+    { "id": 31, "topic": "base-account", "difficulty": "medium",
+      "question": "What is the recommended authentication pattern in the Base App after April 9, 2026?",
+      "options": [
+        "Farcaster sign-in (SIWF)",
+        "Sign-In with Ethereum (SIWE) using wagmi useSignMessage",
+        "Magic-link email authentication",
+        "OAuth via Google only"
+      ],
+      "correct": 1,
+      "explanation": "After the migration to standard web app + wallet, apps use SIWE for authenticated sessions.",
+      "source": "https://docs.base.org/mini-apps/growth/build-viral-mini-apps"
+    },
+    { "id": 32, "topic": "base-account", "difficulty": "hard",
+      "question": "Which RPC method submits a batch of calls to the wallet for execution?",
+      "options": ["eth_sendBatch", "wallet_sendCalls", "wallet_executeBundle", "eth_sendBundle"],
+      "correct": 1,
+      "explanation": "wallet_sendCalls is the EIP-5792 method used to atomically submit multiple calls.",
+      "source": "https://docs.base.org/base-account/reference/core/provider-rpc-methods/wallet_sendCalls"
+    },
+    { "id": 33, "topic": "base-account", "difficulty": "medium",
+      "question": "What does dataCallback capability allow a Base Account to do during a transaction?",
+      "options": [
+        "Replay the transaction in the future",
+        "Collect personal information (email, address, phone, name) from the user",
+        "Read other users' balances",
+        "Bypass transaction confirmation"
+      ],
+      "correct": 1,
+      "explanation": "dataCallback is a Base Account capability that lets dApps request user information (email, shipping address, etc.) inline with a transaction.",
+      "source": "https://docs.base.org/base-account/reference/core/capabilities/datacallback"
+    },
+    { "id": 34, "topic": "base-account", "difficulty": "hard",
+      "question": "Which RPC method returns the status of a previously submitted batch?",
+      "options": ["wallet_getCallsStatus", "eth_getBatchReceipt", "wallet_getCallsHash", "eth_callStatus"],
+      "correct": 0,
+      "explanation": "wallet_getCallsStatus is the EIP-5792 query for the status (pending / confirmed / failed) of a submitted batch.",
+      "source": "https://docs.base.org/base-account/reference/core/provider-rpc-methods/wallet_getCallsStatus"
+    },
+    { "id": 35, "topic": "base-account", "difficulty": "easy",
+      "question": "Why is checking wallet_getCapabilities important before attempting a batch?",
+      "options": [
+        "To prevent the user from being charged twice",
+        "Because EOAs don't support batching, so apps must fall back gracefully",
+        "Because batches need a special token",
+        "It's required by basescan.org"
+      ],
+      "correct": 1,
+      "explanation": "Capabilities querying lets apps detect smart-wallet features (atomicBatch, paymasterService) and gracefully fall back to sequential transactions for EOAs.",
+      "source": "https://docs.base.org/apps/quickstart/build-app"
+    },
+
+    { "id": 36, "topic": "base-app-miniapps", "difficulty": "easy",
+      "question": "What is the Base App?",
+      "options": [
+        "A standalone DEX",
+        "Coinbase's social and wallet super-app where Mini Apps live",
+        "A block explorer",
+        "A hardware wallet companion"
+      ],
+      "correct": 1,
+      "explanation": "Base App is Coinbase's social/wallet super-app that hosts Mini Apps — small web apps with wallet access.",
+      "source": "https://docs.base.org/base-app/introduction/beta-faq"
+    },
+    { "id": 37, "topic": "base-app-miniapps", "difficulty": "medium",
+      "question": "Starting April 9, 2026, what model does the Base App use for Mini Apps?",
+      "options": [
+        "Farcaster Frames v2",
+        "Native React Native bundle",
+        "Standard web app + wallet (registered on base.dev)",
+        "Coinbase-only proprietary SDK"
+      ],
+      "correct": 2,
+      "explanation": "After April 9, 2026, the Base App treats all apps as standard web apps with an injected wallet, and discovery is powered by base.dev metadata.",
+      "source": "https://docs.base.org/mini-apps/growth/build-viral-mini-apps"
+    },
+    { "id": 38, "topic": "base-app-miniapps", "difficulty": "easy",
+      "question": "What is base.dev in the Mini Apps ecosystem?",
+      "options": [
+        "An NFT marketplace",
+        "The project registry, metadata host, and dev preview tool for Mini Apps",
+        "A bridge UI",
+        "A sequencer monitoring dashboard"
+      ],
+      "correct": 1,
+      "explanation": "base.dev is where developers register projects, configure metadata, get builder codes, preview embeds, and access Builder Rewards info.",
+      "source": "https://docs.base.org/base-app/miniapps/quickstart"
+    },
+    { "id": 39, "topic": "base-app-miniapps", "difficulty": "medium",
+      "question": "What is MiniKit?",
+      "options": [
+        "A CLI for deploying smart contracts",
+        "A React SDK for building Mini Apps with wagmi/react-query/Farcaster connector preconfigured",
+        "A Solidity testing framework",
+        "An offline node bundle"
+      ],
+      "correct": 1,
+      "explanation": "MiniKit is the React-based SDK that wires up wagmi, react-query, and connector context for Mini Apps.",
+      "source": "https://docs.base.org/mini-apps/quickstart/new-apps/features"
+    },
+    { "id": 40, "topic": "base-app-miniapps", "difficulty": "medium",
+      "question": "Which MiniKit hook initializes the Mini App context (user info, host)?",
+      "options": ["useAccount", "useMiniKit", "useFrame", "useContext"],
+      "correct": 1,
+      "explanation": "useMiniKit returns context (user, client) and exposes setFrameReady() that the app must call once on first render.",
+      "source": "https://docs.base.org/mini-apps/technical-reference/minikit/hooks/useMiniKit"
+    },
+    { "id": 41, "topic": "base-app-miniapps", "difficulty": "medium",
+      "question": "How should a Mini App open external URLs to keep users in-app?",
+      "options": [
+        "Use plain <a href=\"...\">",
+        "Use the useOpenUrl hook from MiniKit",
+        "Use window.location.href = ...",
+        "Use postMessage to the parent"
+      ],
+      "correct": 1,
+      "explanation": "Raw links risk breaking out of the host. useOpenUrl uses the host's native browser flow.",
+      "source": "https://docs.base.org/mini-apps/features/links"
+    },
+    { "id": 42, "topic": "base-app-miniapps", "difficulty": "easy",
+      "question": "What field in the manifest powers Mini App discovery / categorisation?",
+      "options": ["heroImageUrl", "primaryCategory", "splashBackgroundColor", "ogTitle"],
+      "correct": 1,
+      "explanation": "primaryCategory (e.g., \"social\", \"defi\", \"games\") drives where the app appears in search and category views.",
+      "source": "https://docs.base.org/mini-apps/features/manifest"
+    },
+    { "id": 43, "topic": "base-app-miniapps", "difficulty": "medium",
+      "question": "What does noindex: true in a Mini App manifest do?",
+      "options": [
+        "Hides the app from Base.dev search while testing",
+        "Makes the app invisible to all users",
+        "Disables the smart wallet",
+        "Removes embeds in feeds"
+      ],
+      "correct": 0,
+      "explanation": "noindex prevents indexing during pre-launch testing so half-baked apps don't surface in discovery.",
+      "source": "https://docs.base.org/mini-apps/quickstart/launch-checklist"
+    },
+    { "id": 44, "topic": "base-app-miniapps", "difficulty": "medium",
+      "question": "What is a Builder Code?",
+      "options": [
+        "A discount coupon for gas",
+        "An identifier that attributes app activity / volume to a specific builder for rewards",
+        "A code review checklist",
+        "A linter rule for Solidity"
+      ],
+      "correct": 1,
+      "explanation": "Builder Codes attach attribution to onchain activity originating from a Mini App, powering Builder Rewards distribution.",
+      "source": "https://docs.base.org/base-chain/builder-codes/builder-codes"
+    },
+    { "id": 45, "topic": "base-app-miniapps", "difficulty": "medium",
+      "question": "Which Farcaster SDK method's deeplink replacement is used to view a wallet profile in Base App?",
+      "options": [
+        "https://base.app/coin/<address>",
+        "https://base.app/profile/<wallet>",
+        "https://warpcast.com/<wallet>",
+        "https://base.org/u/<wallet>"
+      ],
+      "correct": 1,
+      "explanation": "viewProfile is replaced by the deeplink https://base.app/profile/WALLET_ADDRESS.",
+      "source": "https://docs.base.org/mini-apps/growth/build-viral-mini-apps"
+    },
+    { "id": 46, "topic": "base-app-miniapps", "difficulty": "hard",
+      "question": "Which Farcaster SDK method has NO replacement in the post-April-2026 Base App?",
+      "options": ["openUrl", "sendToken", "requestCameraAndMicrophoneAccess", "swapToken"],
+      "correct": 2,
+      "explanation": "requestCameraAndMicrophoneAccess (and close, viewCast, composeCast) have no replacement — apps fall back to standard web APIs or omit the feature.",
+      "source": "https://docs.base.org/mini-apps/growth/build-viral-mini-apps"
+    },
+    { "id": 47, "topic": "base-app-miniapps", "difficulty": "easy",
+      "question": "What's the recommended onboarding behavior for a Mini App on first render?",
+      "options": [
+        "Show a Connect Wallet button immediately",
+        "Force email signup",
+        "Show value instantly with one clear CTA; defer auth/wallet prompts until needed",
+        "Run a forced 30-second tutorial"
+      ],
+      "correct": 2,
+      "explanation": "Frictionless onboarding is the official guidance: deliver value immediately, prompt for auth only when truly required.",
+      "source": "https://docs.base.org/mini-apps/growth/optimize-onboarding"
+    },
+    { "id": 48, "topic": "base-app-miniapps", "difficulty": "medium",
+      "question": "What's the role of the embed image in a Mini App post?",
+      "options": [
+        "Decorative only",
+        "It's the preview that converts feed impressions into app launches",
+        "Used for KYC verification",
+        "Required for sequencer indexing"
+      ],
+      "correct": 1,
+      "explanation": "Compelling embed images plus a clear launch CTA are the primary lever for turning impressions into launches in feeds.",
+      "source": "https://docs.base.org/mini-apps/quickstart/launch-checklist"
+    },
+    { "id": 49, "topic": "base-app-miniapps", "difficulty": "hard",
+      "question": "Which file path holds the manifest for a Farcaster-style Mini App pre-migration?",
+      "options": [
+        "/.well-known/farcaster.json",
+        "/manifest.json",
+        "/api/manifest",
+        "/static/farcaster.json"
+      ],
+      "correct": 0,
+      "explanation": "Farcaster Mini App manifests historically lived at /.well-known/farcaster.json. Post-migration, metadata is hosted on base.dev.",
+      "source": "https://docs.base.org/base-app/miniapps/quickstart"
+    },
+    { "id": 50, "topic": "base-app-miniapps", "difficulty": "medium",
+      "question": "What is the simplest in-product way to publish a registered Mini App?",
+      "options": [
+        "Submit a PR to the Base monorepo",
+        "Email Coinbase support",
+        "Create a post in the Base App with the app's URL",
+        "Mint an NFT representing the app"
+      ],
+      "correct": 2,
+      "explanation": "After registering on base.dev, you publish by creating a post in the Base App that contains your app's URL — the embed renders automatically.",
+      "source": "https://docs.base.org/base-app/miniapps/quickstart"
+    },
+
+    { "id": 51, "topic": "onchainkit", "difficulty": "easy",
+      "question": "What is OnchainKit?",
+      "options": [
+        "A node implementation for Base",
+        "A React component library and toolkit for building polished onchain UX",
+        "A custodial bank API",
+        "A Solidity linter"
+      ],
+      "correct": 1,
+      "explanation": "OnchainKit is Coinbase's React component library covering wallet connect, identity, swaps, transactions, NFTs, and more.",
+      "source": "https://docs.base.org/onchainkit/getting-started"
+    },
+    { "id": 52, "topic": "onchainkit", "difficulty": "easy",
+      "question": "Which OnchainKit React component renders a connect-wallet button + state?",
+      "options": ["<Wallet />", "<Connect />", "<Identity />", "<Account />"],
+      "correct": 0,
+      "explanation": "OnchainKit's <Wallet /> component encapsulates the connect, address display, and dropdown menu.",
+      "source": "https://docs.base.org/mini-apps/design-ux/onchainkit"
+    },
+    { "id": 53, "topic": "onchainkit", "difficulty": "medium",
+      "question": "What does the OnchainKit <Identity /> component show?",
+      "options": [
+        "Block height",
+        "Avatar, basename / ENS, address — branded user identity",
+        "Pending tx queue",
+        "DEX prices"
+      ],
+      "correct": 1,
+      "explanation": "<Identity /> displays a user's avatar, basename (or ENS), and shortened address consistently across the app.",
+      "source": "https://docs.base.org/mini-apps/design-ux/onchainkit"
+    },
+    { "id": 54, "topic": "onchainkit", "difficulty": "medium",
+      "question": "Which OnchainKit component wraps a write transaction and surfaces pending / success / error states?",
+      "options": ["<Send />", "<Transaction />", "<Tx />", "<Write />"],
+      "correct": 1,
+      "explanation": "<Transaction /> handles the entire flow: build, simulate, broadcast, confirm — surfacing each state to the user.",
+      "source": "https://docs.base.org/mini-apps/design-ux/onchainkit"
+    },
+    { "id": 55, "topic": "onchainkit", "difficulty": "medium",
+      "question": "Why does OnchainKitProvider take an apiKey prop?",
+      "options": [
+        "To enable read-only RPC",
+        "To unlock Coinbase developer APIs (price, indexer, identity resolution, etc.)",
+        "It's a payment for using the library",
+        "To bypass rate limits on Etherscan"
+      ],
+      "correct": 1,
+      "explanation": "The API key authorizes server-side calls to Coinbase developer services used by OnchainKit components.",
+      "source": "https://docs.base.org/mini-apps/quickstart/new-apps/features"
+    },
+    { "id": 56, "topic": "onchainkit", "difficulty": "medium",
+      "question": "Which providers does OnchainKitProvider configure under the hood?",
+      "options": [
+        "Web3Modal + ethers",
+        "wagmi + react-query (and connector context)",
+        "RainbowKit only",
+        "Drizzle + Truffle"
+      ],
+      "correct": 1,
+      "explanation": "OnchainKitProvider sets up wagmi + react-query and exposes shared context — saving you boilerplate.",
+      "source": "https://docs.base.org/mini-apps/quickstart/new-apps/features"
+    },
+    { "id": 57, "topic": "onchainkit", "difficulty": "hard",
+      "question": "What does the <Swap /> component do?",
+      "options": [
+        "Lets users swap tokens via routed liquidity (Coinbase routing infra)",
+        "Renders a chart only",
+        "Mints an NFT swap receipt",
+        "Sends an email confirmation"
+      ],
+      "correct": 0,
+      "explanation": "<Swap /> is a drop-in token-swap UI that handles quotes, allowances, and execution via Coinbase routing.",
+      "source": "https://docs.base.org/mini-apps/design-ux/onchainkit"
+    },
+    { "id": 58, "topic": "onchainkit", "difficulty": "easy",
+      "question": "Which component pair is used to mint and showcase NFTs?",
+      "options": ["<NFTMint /> + <NFTCard />", "<NFTMake /> + <NFTSee />", "<MintNFT /> + <NFTGallery />", "<Mint /> + <Show />"],
+      "correct": 0,
+      "explanation": "OnchainKit ships <NFTMint /> for the mint flow and <NFTCard /> for displaying NFTs.",
+      "source": "https://docs.base.org/mini-apps/design-ux/onchainkit"
+    },
+    { "id": 59, "topic": "onchainkit", "difficulty": "medium",
+      "question": "Where does the OnchainKit Wallet component fit relative to MiniKit?",
+      "options": [
+        "It replaces MiniKit",
+        "MiniKitProvider wraps OnchainKit context — they're complementary",
+        "It's a fork of MiniKit",
+        "They're incompatible"
+      ],
+      "correct": 1,
+      "explanation": "MiniKitProvider wraps and configures OnchainKitProvider, so the two work together with no extra setup.",
+      "source": "https://docs.base.org/mini-apps/quickstart/new-apps/features"
+    },
+    { "id": 60, "topic": "onchainkit", "difficulty": "easy",
+      "question": "Which framework do most OnchainKit and MiniKit examples assume?",
+      "options": ["Vue", "Svelte", "Next.js (React)", "Angular"],
+      "correct": 2,
+      "explanation": "Examples and quickstarts use Next.js with the App Router — though any React-based stack works.",
+      "source": "https://docs.base.org/apps/quickstart/build-app"
+    },
+
+    { "id": 61, "topic": "usdc-base-pay", "difficulty": "easy",
+      "question": "What is USDC?",
+      "options": ["A meme coin on Base", "A US-dollar-pegged stablecoin issued by Circle", "A privacy coin", "Coinbase's own L2 token"],
+      "correct": 1,
+      "explanation": "USDC is the regulated US-dollar-pegged stablecoin issued by Circle. It's natively issued on Base.",
+      "source": "https://docs.base.org/base-account/reference/base-pay"
+    },
+    { "id": 62, "topic": "usdc-base-pay", "difficulty": "medium",
+      "question": "Which is the canonical native USDC contract on Base mainnet?",
+      "options": [
+        "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913",
+        "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
+        "0xd9aAEC86B65D86f6A7B5B1b0c42FFA531710b6CA",
+        "0xdac17f958d2ee523a2206206994597c13d831ec7"
+      ],
+      "correct": 0,
+      "explanation": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913 is native USDC on Base; the others are USDT or other-chain addresses.",
+      "source": "https://docs.base.org/get-started/concepts"
+    },
+    { "id": 63, "topic": "usdc-base-pay", "difficulty": "medium",
+      "question": "How many decimals does USDC use?",
+      "options": ["6", "8", "12", "18"],
+      "correct": 0,
+      "explanation": "USDC uses 6 decimals — common bug source if devs assume 18-decimal scaling.",
+      "source": "https://docs.base.org/base-account/reference/base-pay"
+    },
+    { "id": 64, "topic": "usdc-base-pay", "difficulty": "easy",
+      "question": "What does Base Pay enable?",
+      "options": [
+        "Buying ETH with credit card",
+        "One-tap USDC payments and recurring USDC subscriptions via smart wallets",
+        "Cross-chain bridging",
+        "Off-ramping to fiat"
+      ],
+      "correct": 1,
+      "explanation": "Base Pay turns Base Account + Spend Permissions into a one-tap USDC payment + subscription primitive for apps.",
+      "source": "https://docs.base.org/base-account/overview/what-is-base-account"
+    },
+    { "id": 65, "topic": "usdc-base-pay", "difficulty": "medium",
+      "question": "What is x402?",
+      "options": [
+        "An HTTP-native payment protocol where APIs charge per-request via crypto",
+        "A new HTTP status code for missing pages",
+        "A Base-specific gas sponsorship",
+        "A frontend routing library"
+      ],
+      "correct": 0,
+      "explanation": "x402 is an HTTP payment protocol that lets services charge per request — agents (and humans) can pay micro-amounts to access APIs.",
+      "source": "https://docs.base.org/ai-agents/payments/accepting-payments"
+    },
+    { "id": 66, "topic": "usdc-base-pay", "difficulty": "medium",
+      "question": "Which Base Pay function executes a recurring USDC charge from the backend?",
+      "options": ["subscription.charge", "subscription.bill", "spend.execute", "transfer.recurring"],
+      "correct": 0,
+      "explanation": "subscription.charge runs a charge against a previously-granted Spend Permission via a CDP server wallet.",
+      "source": "https://docs.base.org/base-account/reference/base-pay/charge"
+    },
+    { "id": 67, "topic": "usdc-base-pay", "difficulty": "hard",
+      "question": "What's the difference between USDC and USDbC on Base?",
+      "options": [
+        "USDC is bridged from Ethereum, USDbC is native",
+        "USDbC is bridged (legacy); USDC is natively issued by Circle and preferred",
+        "They're identical, just different brand names",
+        "USDbC is for businesses, USDC for retail"
+      ],
+      "correct": 1,
+      "explanation": "USDbC was the older bridged USDC. Once Circle launched native USDC on Base, projects migrated; USDbC is considered legacy.",
+      "source": "https://docs.base.org/get-started/concepts"
+    },
+    { "id": 68, "topic": "usdc-base-pay", "difficulty": "medium",
+      "question": "Which method retrieves the status of a Base Pay payment?",
+      "options": ["getPaymentStatus", "checkPayment", "payments.find", "tx.status"],
+      "correct": 0,
+      "explanation": "getPaymentStatus returns the lifecycle state of a payment transaction in Base Pay.",
+      "source": "https://docs.base.org/base-account/reference/base-pay/getPaymentStatus"
+    },
+    { "id": 69, "topic": "usdc-base-pay", "difficulty": "medium",
+      "question": "How is a subscription cancelled / revoked from the backend?",
+      "options": ["subscription.cancel", "subscription.revoke", "subscription.delete", "spend.cancel"],
+      "correct": 1,
+      "explanation": "subscription.revoke removes the underlying Spend Permission so no further charges can be made.",
+      "source": "https://docs.base.org/base-account/reference/base-pay/revoke"
+    },
+    { "id": 70, "topic": "usdc-base-pay", "difficulty": "hard",
+      "question": "What is subscription.getOrCreateSubscriptionOwnerWallet?",
+      "options": [
+        "A function that mints a new ERC-20",
+        "A method that returns or creates a CDP smart wallet to act as the subscription owner",
+        "A user-facing UI",
+        "A KYC step"
+      ],
+      "correct": 1,
+      "explanation": "It provisions a CDP-backed smart wallet that owns the Spend Permission and is the address from which charges are settled.",
+      "source": "https://docs.base.org/base-account/reference/base-pay/getOrCreateSubscriptionOwnerWallet"
+    },
+
+    { "id": 71, "topic": "defi", "difficulty": "easy",
+      "question": "Which AMM/DEX is the largest by liquidity on Base and uses a ve(3,3) model?",
+      "options": ["Uniswap V2", "Aerodrome", "Curve", "Balancer"],
+      "correct": 1,
+      "explanation": "Aerodrome (a Velodrome fork) is Base's largest DEX, using the ve(3,3) tokenomics model.",
+      "source": "https://docs.base.org/cookbook/onboard-any-user"
+    },
+    { "id": 72, "topic": "defi", "difficulty": "medium",
+      "question": "What category does Morpho on Base fit into?",
+      "options": ["DEX", "Lending / borrowing market", "NFT marketplace", "Bridge"],
+      "correct": 1,
+      "explanation": "Morpho is a lending protocol on Base (and other EVM chains) optimized for capital efficiency.",
+      "source": "https://docs.base.org/cookbook/onboard-any-user"
+    },
+    { "id": 73, "topic": "defi", "difficulty": "medium",
+      "question": "What is the canonical bridge for Base?",
+      "options": [
+        "https://hop.exchange",
+        "https://bridge.base.org",
+        "https://omni.bridge",
+        "https://stargate.finance"
+      ],
+      "correct": 1,
+      "explanation": "bridge.base.org is the official native bridge using the OP Stack canonical-bridge contracts.",
+      "source": "https://docs.base.org/base-chain/tokens/bridge-a-token-to-base"
+    },
+    { "id": 74, "topic": "defi", "difficulty": "medium",
+      "question": "What's the main UX difference between the canonical bridge and a third-party bridge (Across, Stargate)?",
+      "options": [
+        "Canonical is faster",
+        "Canonical takes ~7 days for L2→L1; third parties give instant liquidity for a fee",
+        "Third parties are riskier and never used",
+        "There's no difference"
+      ],
+      "correct": 1,
+      "explanation": "Canonical L2→L1 withdrawals must wait the challenge period; third-party bridges front liquidity for a small fee.",
+      "source": "https://docs.base.org/base-chain/tokens/bridge-a-token-to-base"
+    },
+    { "id": 75, "topic": "defi", "difficulty": "hard",
+      "question": "What does Uniswap V4's hooks feature enable?",
+      "options": [
+        "Custom logic at pool lifecycle events (initialise, swap, modifyLiquidity, donate)",
+        "Bridging V3 liquidity automatically",
+        "ZK-rollup support",
+        "Free swaps for whitelisted users"
+      ],
+      "correct": 0,
+      "explanation": "Hooks let pool creators inject custom logic at pool events, enabling things like dynamic fees, TWAMM, on-chain limit orders.",
+      "source": "https://docs.base.org/cookbook/onboard-any-user"
+    },
+    { "id": 76, "topic": "defi", "difficulty": "medium",
+      "question": "What does an LP (liquidity provider) contribute to a DEX?",
+      "options": [
+        "Compute power",
+        "Pairs of tokens (or single-sided in some designs) used to fill swaps, in exchange for trading fees",
+        "Validation services",
+        "Identity attestations"
+      ],
+      "correct": 1,
+      "explanation": "LPs deposit token pairs into pools and earn a share of trading fees proportional to their liquidity.",
+      "source": "https://docs.base.org/cookbook/onboard-any-user"
+    },
+    { "id": 77, "topic": "defi", "difficulty": "easy",
+      "question": "What does TVL stand for?",
+      "options": ["Total Value Locked", "Token Verification Layer", "Trading Volume Limit", "Trustless Validator Logic"],
+      "correct": 0,
+      "explanation": "TVL = Total Value Locked, a common metric for the assets deposited in a protocol.",
+      "source": "https://docs.base.org/get-started/concepts"
+    },
+    { "id": 78, "topic": "defi", "difficulty": "hard",
+      "question": "What is impermanent loss?",
+      "options": [
+        "A bug that locks LP tokens",
+        "The opportunity cost an LP suffers when pool token prices diverge vs. simply holding the tokens",
+        "Network latency",
+        "Tax on bridge withdrawals"
+      ],
+      "correct": 1,
+      "explanation": "Impermanent loss is the gap between LP value and just-holding-the-tokens; it crystallises when an LP withdraws.",
+      "source": "https://docs.base.org/get-started/concepts"
+    },
+    { "id": 79, "topic": "defi", "difficulty": "medium",
+      "question": "Which lending protocol focuses on single-asset, borrow-only markets and exists on Base?",
+      "options": ["Aave V2", "Compound III (Comet)", "MakerDAO", "Curve LlamaLend"],
+      "correct": 1,
+      "explanation": "Compound III (Comet) markets have a single borrowable asset with multiple collateral types and isolated risk.",
+      "source": "https://docs.base.org/cookbook/onboard-any-user"
+    },
+    { "id": 80, "topic": "defi", "difficulty": "hard",
+      "question": "What is concentrated liquidity (Uniswap V3 / V4 model)?",
+      "options": [
+        "Locking liquidity for >1 year",
+        "Liquidity providers choose a price range to provide liquidity within, achieving higher capital efficiency",
+        "Pooling all DEX liquidity into one pool",
+        "Centralised market makers"
+      ],
+      "correct": 1,
+      "explanation": "Concentrated liquidity lets LPs concentrate capital into specific price ranges — higher efficiency, but higher impermanent loss risk if price exits range.",
+      "source": "https://docs.base.org/cookbook/onboard-any-user"
+    },
+
+    { "id": 81, "topic": "farcaster-social", "difficulty": "easy",
+      "question": "What is Farcaster?",
+      "options": [
+        "A centralised social app",
+        "A decentralised social protocol with public posts (casts) and channels",
+        "A cross-chain messaging bus",
+        "A wallet"
+      ],
+      "correct": 1,
+      "explanation": "Farcaster is a decentralised social protocol; Warpcast and other clients render the Farcaster network.",
+      "source": "https://docs.base.org/mini-apps/overview"
+    },
+    { "id": 82, "topic": "farcaster-social", "difficulty": "easy",
+      "question": "What does FID stand for in Farcaster?",
+      "options": ["File ID", "Farcaster ID", "Functional Interface Definition", "Federated Identity Domain"],
+      "correct": 1,
+      "explanation": "FID = Farcaster ID, a numeric identifier for users on the Farcaster network.",
+      "source": "https://docs.base.org/mini-apps/features/authentication"
+    },
+    { "id": 83, "topic": "farcaster-social", "difficulty": "medium",
+      "question": "What is a 'cast' in Farcaster terminology?",
+      "options": ["A payment", "A direct message", "A public post", "A user reputation score"],
+      "correct": 2,
+      "explanation": "A cast is a public Farcaster post (analogous to a tweet).",
+      "source": "https://docs.base.org/mini-apps/overview"
+    },
+    { "id": 84, "topic": "farcaster-social", "difficulty": "easy",
+      "question": "What's a Farcaster channel?",
+      "options": [
+        "A private DM thread",
+        "A topic-based community where casts are aggregated",
+        "A user verification badge",
+        "A bridge between Farcaster and X (Twitter)"
+      ],
+      "correct": 1,
+      "explanation": "Channels are topic-based communities — like subreddits on top of the Farcaster graph.",
+      "source": "https://docs.base.org/mini-apps/overview"
+    },
+    { "id": 85, "topic": "farcaster-social", "difficulty": "medium",
+      "question": "What is the relationship between Frames and Mini Apps in 2026?",
+      "options": [
+        "Frames are the new name for Mini Apps",
+        "Mini Apps replaced Frames v2 in the Base App with a standard-web-app + wallet model",
+        "They're entirely unrelated technologies",
+        "Both were deprecated"
+      ],
+      "correct": 1,
+      "explanation": "Mini Apps evolved out of Frames, and after April 9, 2026 the Base App treats them as standard web apps with an injected wallet.",
+      "source": "https://docs.base.org/mini-apps/growth/build-viral-mini-apps"
+    },
+    { "id": 86, "topic": "farcaster-social", "difficulty": "medium",
+      "question": "Pre-migration, what role did Neynar play for Mini Apps?",
+      "options": [
+        "Sequencer for Base",
+        "Hosted Farcaster hubs and webhook infrastructure (FID-based notifications)",
+        "Stablecoin issuer",
+        "L2 bridging service"
+      ],
+      "correct": 1,
+      "explanation": "Neynar provided hosted Farcaster hubs, APIs, and webhooks (e.g., add/remove events, notifications) for Mini App developers.",
+      "source": "https://docs.base.org/mini-apps/growth/build-viral-mini-apps"
+    },
+    { "id": 87, "topic": "farcaster-social", "difficulty": "medium",
+      "question": "After April 9, 2026, what addressing scheme does the Base.dev notifications API use?",
+      "options": ["FID-based", "Email-based", "Wallet-address-based", "Phone-number-based"],
+      "correct": 2,
+      "explanation": "Base.dev notifications target users by wallet address (replacing FID-based notifications via Neynar).",
+      "source": "https://docs.base.org/mini-apps/growth/build-viral-mini-apps"
+    },
+    { "id": 88, "topic": "farcaster-social", "difficulty": "hard",
+      "question": "Which Farcaster SDK action lets a Mini App open a cast composer prefilled with content?",
+      "options": ["openCast", "writeCast", "composeCast", "promptCast"],
+      "correct": 2,
+      "explanation": "composeCast opened the cast composer with prefilled text/embeds. (It has no replacement in the Base App after migration — there's nothing equivalent needed.)",
+      "source": "https://docs.base.org/mini-apps/growth/build-viral-mini-apps"
+    },
+    { "id": 89, "topic": "farcaster-social", "difficulty": "easy",
+      "question": "What is Warpcast?",
+      "options": [
+        "A bridge",
+        "A popular Farcaster client (and the original one) by Merkle Manufactory",
+        "Coinbase's wallet",
+        "A node implementation"
+      ],
+      "correct": 1,
+      "explanation": "Warpcast is the leading Farcaster client built by Merkle Manufactory.",
+      "source": "https://docs.base.org/mini-apps/overview"
+    },
+    { "id": 90, "topic": "farcaster-social", "difficulty": "medium",
+      "question": "What is one strong viral mechanic Mini Apps should design for, per the growth playbook?",
+      "options": [
+        "Forced re-share popups",
+        "Native share-to-cast flows that turn single-player moments into threads / returns",
+        "Ads on every screen",
+        "Email blasts"
+      ],
+      "correct": 1,
+      "explanation": "Native share / social-graph integration converts single-user actions into threaded conversations and re-acquisition.",
+      "source": "https://docs.base.org/mini-apps/quickstart/launch-checklist"
+    },
+
+    { "id": 91, "topic": "tools-security", "difficulty": "easy",
+      "question": "Which is the standard Etherscan-style explorer for Base?",
+      "options": ["Etherscan", "BaseScan", "Snowtrace", "BscScan"],
+      "correct": 1,
+      "explanation": "BaseScan (basescan.org) is the canonical block explorer for Base, run by the Etherscan team.",
+      "source": "https://docs.base.org/get-started/block-explorers"
+    },
+    { "id": 92, "topic": "tools-security", "difficulty": "medium",
+      "question": "Which company runs the Ethereum Attestation Service (EAS)?",
+      "options": [
+        "Coinbase",
+        "Ethereum Attestation Service is a public good, not run by a single company",
+        "Base Foundation",
+        "Optimism Labs"
+      ],
+      "correct": 1,
+      "explanation": "EAS is an open public good — anyone can register schemas and create attestations on supported chains, including Base.",
+      "source": "https://docs.attest.org/docs/welcome"
+    },
+    { "id": 93, "topic": "tools-security", "difficulty": "easy",
+      "question": "What is an EAS Schema?",
+      "options": [
+        "A SQL table",
+        "A typed structure defining the data layout of attestations of a given kind",
+        "A Foundry config file",
+        "A wallet permission"
+      ],
+      "correct": 1,
+      "explanation": "Schemas in EAS define the typed fields of an attestation (e.g., 'address user, uint8 level'). They're registered once via the Schema Registry.",
+      "source": "https://docs.attest.org/docs/core--concepts/schemas"
+    },
+    { "id": 94, "topic": "tools-security", "difficulty": "medium",
+      "question": "What is a typical use case for an EAS attestation?",
+      "options": [
+        "Sending tokens",
+        "Creating a verifiable signed claim about an address (e.g., \"is KYC-verified\", \"holds level 5\")",
+        "Generating gas",
+        "Bridging tokens"
+      ],
+      "correct": 1,
+      "explanation": "EAS attestations are signed, on-chain (or hashed onchain) claims about an address — KYC, level, reputation, audit, etc.",
+      "source": "https://docs.attest.org/docs/welcome"
+    },
+    { "id": 95, "topic": "tools-security", "difficulty": "medium",
+      "question": "Which RPC providers are commonly used for Base mainnet besides the public endpoint?",
+      "options": [
+        "Alchemy, QuickNode, Coinbase Cloud",
+        "Cloudflare, Akamai, Fastly",
+        "Bitnodes, Mempool.space",
+        "Etherscan, Tenderly"
+      ],
+      "correct": 0,
+      "explanation": "Standard EVM RPC providers operate on Base — Alchemy, QuickNode, Coinbase Cloud, Infura, etc. Tenderly is a debugger / simulator, not primarily an RPC.",
+      "source": "https://docs.base.org/get-started/concepts"
+    },
+    { "id": 96, "topic": "tools-security", "difficulty": "medium",
+      "question": "Which platform is widely used to simulate / debug transactions on Base?",
+      "options": ["Tenderly", "Postman", "GitHub Actions", "OpenSea"],
+      "correct": 0,
+      "explanation": "Tenderly provides simulation, debugger, and alerting for EVM chains including Base.",
+      "source": "https://docs.base.org/get-started/concepts"
+    },
+    { "id": 97, "topic": "tools-security", "difficulty": "medium",
+      "question": "Which is a popular subgraph / data indexing platform usable on Base?",
+      "options": ["The Graph", "Postgres", "Snowflake", "Kafka"],
+      "correct": 0,
+      "explanation": "The Graph (and Goldsky, Envio) supports Base for declarative event indexing and queries.",
+      "source": "https://docs.base.org/get-started/data-indexers"
+    },
+    { "id": 98, "topic": "tools-security", "difficulty": "hard",
+      "question": "What's the safest pattern for app-side wallet capability detection?",
+      "options": [
+        "Assume EOA always",
+        "Always assume smart wallet",
+        "Check capabilities against your deployment chain (not the wallet's current chain) before attempting batch",
+        "Use eth_chainId only"
+      ],
+      "correct": 2,
+      "explanation": "useChainId returns the wallet's current chain, not your deployment chain — checking capabilities against the wrong chain is a known footgun.",
+      "source": "https://docs.base.org/apps/quickstart/build-app"
+    },
+    { "id": 99, "topic": "tools-security", "difficulty": "easy",
+      "question": "What are Builder Rewards on Base?",
+      "options": [
+        "Tokens given to all users for signing in",
+        "Onchain rewards that go to active builders shipping useful apps on Base",
+        "A discount for sequencer fees",
+        "Hardware-wallet sponsorship"
+      ],
+      "correct": 1,
+      "explanation": "Builder Rewards are an onchain incentive program that distributes rewards to active builders, attributed via Builder Codes.",
+      "source": "https://docs.base.org/mini-apps/growth/rewards"
+    },
+    { "id": 100, "topic": "tools-security", "difficulty": "hard",
+      "question": "When designing a Mini App, which of the following is NOT recommended by the launch checklist?",
+      "options": [
+        "Sign your manifest properly",
+        "Show a Connect Wallet modal as the very first interaction",
+        "Use clear primary CTAs and respect mobile safe areas",
+        "Configure native share-to-cast flows"
+      ],
+      "correct": 1,
+      "explanation": "Forcing Connect-Wallet as the first interaction is explicitly anti-pattern in the onboarding guide. Defer wallet/auth prompts until value has been delivered.",
+      "source": "https://docs.base.org/mini-apps/growth/optimize-onboarding"
+    }
+
+  ]
+}
