@@ -12,10 +12,14 @@ export function WalletPill() {
   const { disconnect } = useDisconnect();
 
   if (!isConnected) {
-    const baseAcct = connectors.find((c) => c.id === 'coinbaseWalletSDK') ?? connectors[0];
+    // Inside Base App the host injects a provider — prefer it; otherwise fall back to Coinbase Wallet SDK.
+    const preferred =
+      connectors.find((c) => c.id === 'injected') ??
+      connectors.find((c) => c.id === 'coinbaseWalletSDK') ??
+      connectors[0];
     return (
       <button
-        onClick={() => baseAcct && connect({ connector: baseAcct })}
+        onClick={() => preferred && connect({ connector: preferred })}
         disabled={isPending}
         className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-primary text-white font-semibold text-xs shadow-[0_4px_10px_-2px_rgba(0,82,255,0.40)] disabled:opacity-60"
       >

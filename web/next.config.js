@@ -6,6 +6,12 @@ const nextConfig = {
     config.externals.push('pino-pretty', 'lokijs', 'encoding');
     return config;
   },
+  async rewrites() {
+    return [
+      // The Base App / Farcaster clients look for this exact path
+      { source: '/.well-known/farcaster.json', destination: '/api/manifest' },
+    ];
+  },
 };
 
 module.exports = nextConfig;

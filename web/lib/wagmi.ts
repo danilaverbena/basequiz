@@ -3,18 +3,22 @@ import { base } from 'wagmi/chains';
 import { coinbaseWallet, injected } from 'wagmi/connectors';
 
 /**
- * Use Coinbase Wallet connector with smart-wallet preference — under the hood
- * this is Base Account (the Coinbase smart wallet brand).
- * Add a generic `injected` fallback for MetaMask / browser extensions.
+ * Connector ordering matters for in-app browser UX:
+ *   1. `injected()` first — inside Base App's WebView the host injects its
+ *      Base Account directly into window.ethereum, so this picks it up
+ *      with no popup.
+ *   2. `coinbaseWallet({ preference: 'smartWalletOnly' })` second — fallback
+ *      for users opening the URL in a regular desktop / mobile browser; opens
+ *      Coinbase smart-wallet flow (which is Base Account under the hood).
  */
 export const config = createConfig({
   chains: [base],
   connectors: [
+    injected(),
     coinbaseWallet({
       appName:    'BaseQuiz',
       preference: 'smartWalletOnly',
     }),
-    injected(),
   ],
   storage: createStorage({ storage: cookieStorage }),
   ssr: true,
