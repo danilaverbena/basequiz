@@ -12,7 +12,7 @@ export function WalletPill() {
   const { disconnect } = useDisconnect();
 
   if (!isConnected) {
-    const baseAcct = connectors.find((c) => c.id === 'baseAccount') ?? connectors[0];
+    const baseAcct = connectors.find((c) => c.id === 'coinbaseWalletSDK') ?? connectors[0];
     return (
       <button
         onClick={() => baseAcct && connect({ connector: baseAcct })}
