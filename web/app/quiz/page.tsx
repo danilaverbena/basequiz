@@ -13,7 +13,7 @@ type PublicQuestion = {
   topic: string;
   difficulty: string;
   question: string;
-  options: [string, string, string, string];
+  options: string[];
 };
 
 const LETTERS = ['A', 'B', 'C', 'D'];

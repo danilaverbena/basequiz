@@ -11,13 +11,13 @@ export type Question = {
   topic: string;
   difficulty: Difficulty;
   question: string;
-  options: [string, string, string, string];
+  options: string[]; // length always 4
   correct: 0 | 1 | 2 | 3; // SERVER-ONLY
   explanation: string;
   source: string;
 };
 
-export const questions: Question[] = (questionsRaw as { questions: Question[] }).questions;
+export const questions: Question[] = (questionsRaw as unknown as { questions: Question[] }).questions;
 
 export const TOPICS = (questionsRaw as { topics: Record<string, { label: string; count: number }> }).topics;
 
