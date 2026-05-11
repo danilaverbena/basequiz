@@ -37,6 +37,8 @@ export const metadata: Metadata = {
     'fc:miniapp': JSON.stringify(miniappEmbed),
     // Same payload duplicated under the legacy key for backward compat.
     'fc:frame':   JSON.stringify(miniappEmbed),
+    // Base.dev ownership verification — proves we own this domain for the project.
+    'base:app_id': '69ffa6669ee68cd142d1afa8',
   },
 };
 
