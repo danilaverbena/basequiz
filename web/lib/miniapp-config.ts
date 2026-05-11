@@ -9,6 +9,13 @@ export const ORIGIN =
 
 export const SPLASH_BG = '#FAF6EE';
 
+/**
+ * Builder code from base.dev — attributes onchain activity originating from
+ * this project to the builder for Builder Rewards.
+ * Override via env if needed.
+ */
+export const BUILDER_CODE = process.env.NEXT_PUBLIC_BUILDER_CODE || 'bc_h6qo32f2';
+
 export const miniapp = {
   version:                '1',
   name:                   'BaseQuiz',
@@ -26,6 +33,13 @@ export const miniapp = {
   ogDescription:          'Onchain quiz with EAS-attested levels. 100 questions across the Base ecosystem.',
   ogImageUrl:             `${ORIGIN}/brand/hero.png`,
   webhookUrl:             `${ORIGIN}/api/webhook`,
+  builderCode:            BUILDER_CODE,
+  screenshotUrls: [
+    `${ORIGIN}/screenshots/home.png`,
+    `${ORIGIN}/screenshots/quiz.png`,
+    `${ORIGIN}/screenshots/profile.png`,
+    `${ORIGIN}/screenshots/ranks.png`,
+  ],
 } as const;
 
 /** Serialised `fc:miniapp` embed object — what powers the rich preview card in feeds. */

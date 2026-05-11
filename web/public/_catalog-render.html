@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=540, initial-scale=1" />
+<title>BaseQuiz catalog screenshots</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body {
+    width: 540px;
+    font-family: 'Inter', system-ui, sans-serif;
+    color: #1A1733;
+    -webkit-font-smoothing: antialiased;
+    background: #2A2638;
+  }
+  /* Each "screen" is 540x960 with content, full-bleed */
+  .screen {
+    width: 540px;
+    height: 960px;
+    background: #FAF6EE;
+    background-image:
+      radial-gradient(circle at 12% 8%,  rgba(255, 142, 114, 0.10), transparent 40%),
+      radial-gradient(circle at 88% 18%, rgba(0, 82, 255, 0.08),   transparent 40%),
+      radial-gradient(circle at 60% 95%, rgba(91, 199, 157, 0.08), transparent 40%);
+    padding: 18px 24px;
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+  }
+  /* status bar */
+  .sb {
+    display: flex; justify-content: space-between;
+    font-size: 14px; font-weight: 600; padding-bottom: 4px; padding-top: 4px;
+  }
+  .sb .icons { opacity: 0.5; }
+
+  /* header */
+  .h-row { display: flex; justify-content: space-between; align-items: center; margin-top: 4px; margin-bottom: 12px; }
+  .logo { display: flex; align-items: center; gap: 10px; font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 20px; letter-spacing: -0.01em; }
+  .logo-dot {
+    width: 28px; height: 28px;
+    background: #0052FF;
+    clip-path: polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%);
+    box-shadow: 0 4px 14px rgba(0, 82, 255, 0.30);
+  }
+  .wallet {
+    display: flex; align-items: center; gap: 8px;
+    padding: 8px 14px;
+    background: #fff;
+    border: 1px solid #EFE6D4;
+    border-radius: 999px;
+    font-size: 13px; color: #6B647A; font-weight: 500;
+    box-shadow: 0 2px 4px rgba(40, 30, 60, 0.04);
+  }
+  .wallet::before { content: ''; width: 9px; height: 9px; border-radius: 50%; background: #5BC79D; box-shadow: 0 0 0 3px rgba(91,199,157,0.18); }
+
+  /* ====== HOME ====== */
+  .greeting .lbl { color: #A39DB0; font-size: 12px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.08em; }
+  .greeting .nm  { font-family: 'Space Grotesk', sans-serif; font-size: 26px; font-weight: 700; margin-top: 2px; }
+  .hero {
+    margin-top: 14px;
+    background: #fff;
+    border: 1px solid #EFE6D4;
+    border-radius: 28px;
+    padding: 24px 20px 22px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 4px 22px -6px rgba(40, 30, 60, 0.06);
+  }
+  .hero::before { content: ''; position: absolute; inset: -50% -50% auto auto; width: 280px; height: 280px; background: radial-gradient(circle, rgba(255,142,114,0.20) 0%, transparent 70%); pointer-events: none; }
+  .hero::after  { content: ''; position: absolute; inset: auto auto -50% -50%; width: 280px; height: 280px; background: radial-gradient(circle, rgba(0,82,255,0.12) 0%, transparent 70%); pointer-events: none; }
+  .hero img { width: 180px; height: 180px; object-fit: contain; border-radius: 50%; margin: 0 auto 8px; display: block; position: relative; z-index: 2; }
+  .lvl-tag { font-family: 'Space Grotesk', sans-serif; font-size: 13px; font-weight: 600; color: #0052FF; letter-spacing: 0.18em; text-transform: uppercase; position: relative; z-index: 2; }
+  .lvl-nm  { font-family: 'Space Grotesk', sans-serif; font-size: 32px; font-weight: 700; margin-top: 2px; letter-spacing: -0.02em; position: relative; z-index: 2; }
+  .strk { display: flex; align-items: center; justify-content: center; gap: 12px; margin-top: 16px; color: #6B647A; font-size: 14px; position: relative; z-index: 2; }
+  .dots { display: flex; gap: 7px; }
+  .dot { width: 12px; height: 12px; border-radius: 50%; background: #F5EFE3; border: 1px solid #EFE6D4; }
+  .dot.on { background: #FF8E72; border-color: #FF8E72; box-shadow: 0 0 0 3px #FFE3D8; }
+  .cta {
+    margin-top: 18px; width: 100%; padding: 18px;
+    background: linear-gradient(180deg, #2D6BFF 0%, #0052FF 100%);
+    color: white; border: 0; border-radius: 20px;
+    font-size: 16px; font-weight: 700;
+    box-shadow: 0 8px 22px -6px rgba(0, 82, 255, 0.45);
+    position: relative; z-index: 2;
+  }
+  .stats3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: 16px; }
+  .stat {
+    background: #fff; border: 1px solid #EFE6D4; border-radius: 18px; padding: 14px 8px; text-align: center;
+    box-shadow: 0 2px 10px -4px rgba(40, 30, 60, 0.04);
+  }
+  .stat .v { font-family: 'Space Grotesk', sans-serif; font-size: 22px; font-weight: 700; }
+  .stat .l { font-size: 11px; color: #A39DB0; text-transform: uppercase; letter-spacing: 0.08em; margin-top: 2px; }
+  .section-title {
+    display: flex; justify-content: space-between; align-items: center;
+    margin-top: 16px; margin-bottom: 10px;
+  }
+  .section-title .t { font-size: 15px; font-weight: 700; }
+  .section-title .m { color: #0052FF; font-size: 13px; font-weight: 600; }
+  .recents { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; }
+  .recents .r { aspect-ratio: 1; background: #fff; border: 1px solid #EFE6D4; border-radius: 14px; overflow: hidden; box-shadow: 0 2px 6px -2px rgba(40, 30, 60, 0.04); }
+  .recents .r img { width: 100%; height: 100%; object-fit: contain; }
+  .recents .r.locked { opacity: 0.30; }
+
+  /* ====== QUIZ ====== */
+  .chip {
+    display: inline-flex; align-items: center; gap: 6px;
+    padding: 8px 14px;
+    background: #E8F0FF; border: 1px solid rgba(0, 82, 255, 0.16);
+    border-radius: 999px;
+    font-size: 13px; font-weight: 600; color: #0052FF; margin-top: 4px;
+  }
+  .q-counter { color: #A39DB0; font-size: 13px; margin-top: 16px; font-weight: 500; }
+  .q-text {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 24px; line-height: 1.32; font-weight: 600; letter-spacing: -0.01em;
+    margin-top: 10px; margin-bottom: 22px;
+  }
+  .answers { display: flex; flex-direction: column; gap: 12px; }
+  .ans {
+    background: #fff; border: 1.5px solid #EFE6D4; border-radius: 18px;
+    padding: 16px;
+    display: flex; align-items: center; gap: 14px;
+    font-size: 15px; font-weight: 500; line-height: 1.35;
+    box-shadow: 0 2px 8px -3px rgba(40,30,60,0.04);
+  }
+  .ans .letter {
+    width: 34px; height: 34px; border-radius: 12px;
+    background: #F5EFE3; color: #6B647A; border: 1px solid #EFE6D4;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 700; font-size: 14px;
+    font-family: 'Space Grotesk', sans-serif;
+  }
+  .ans.selected { border-color: #0052FF; background: #F2F6FF; }
+  .ans.selected .letter { background: #0052FF; color: white; border-color: #0052FF; box-shadow: 0 4px 10px -2px rgba(0,82,255,0.40); }
+  .gas {
+    display: flex; justify-content: space-between; align-items: center;
+    margin: 18px 0 12px; padding: 12px 16px;
+    background: #F5EFE3; border: 1px solid #F5EEDF; border-radius: 14px;
+    font-size: 13px; color: #6B647A;
+  }
+  .gas .v { color: #1A1733; font-weight: 600; }
+
+  /* ====== PROFILE ====== */
+  .prof-hero {
+    background: #fff; border: 1px solid #EFE6D4; border-radius: 28px;
+    padding: 18px; text-align: center;
+    position: relative; overflow: hidden;
+    box-shadow: 0 4px 22px -6px rgba(40,30,60,0.06);
+  }
+  .prof-hero::before { content: ''; position: absolute; inset: -40% auto auto -40%; width: 240px; height: 240px; background: radial-gradient(circle, rgba(0,82,255,0.12), transparent 70%); }
+  .prof-hero::after  { content: ''; position: absolute; inset: auto -40% -40% auto; width: 240px; height: 240px; background: radial-gradient(circle, rgba(255,142,114,0.16), transparent 70%); }
+  .prof-hero img { width: 130px; height: 130px; border-radius: 50%; position: relative; z-index: 2; }
+  .handle { font-family: 'Space Grotesk', sans-serif; font-size: 24px; font-weight: 700; margin-top: 8px; position: relative; z-index: 2; }
+  .addr { font-size: 12px; color: #A39DB0; font-family: 'JetBrains Mono', monospace; margin-top: 2px; position: relative; z-index: 2; }
+  .stats4 { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 12px; }
+  .stat4 { padding: 16px; border-radius: 18px; border: 1px solid; }
+  .stat4 .v { font-family: 'Space Grotesk', sans-serif; font-size: 24px; font-weight: 700; }
+  .stat4 .l { font-size: 11px; color: #A39DB0; text-transform: uppercase; letter-spacing: 0.08em; margin-top: 2px; }
+  .stat4.blue   { background: #E8F0FF;   border-color: rgba(0,82,255,0.18); }
+  .stat4.mint   { background: #D9F2E6;   border-color: rgba(91,199,157,0.24); }
+  .stat4.peach  { background: #FFE3D8;   border-color: rgba(255,142,114,0.24); }
+  .stat4.yellow { background: #FFF1CC;   border-color: rgba(255,199,74,0.30); }
+  .ach-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; margin-top: 10px; }
+  .ach { aspect-ratio: 1; background: #fff; border: 1px solid #EFE6D4; border-radius: 12px; overflow: hidden; position: relative; box-shadow: 0 2px 6px -2px rgba(40,30,60,0.04); }
+  .ach img { width: 100%; height: 100%; object-fit: contain; }
+  .ach.locked { opacity: 0.20; filter: grayscale(0.7); }
+  .ach.locked::after { content: '🔒'; position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font-size: 18px; opacity: 0.65; filter: grayscale(0); }
+
+  /* ====== RANKS ====== */
+  .lb-tabs { display: flex; gap: 5px; margin-top: 6px; margin-bottom: 16px; background: #F5EFE3; border: 1px solid #F5EEDF; padding: 5px; border-radius: 16px; }
+  .lb-tab { flex: 1; text-align: center; padding: 11px; border-radius: 12px; font-size: 13px; font-weight: 600; color: #6B647A; }
+  .lb-tab.active { background: #fff; color: #0052FF; box-shadow: 0 2px 8px -2px rgba(40,30,60,0.10); }
+  .podium { display: grid; grid-template-columns: 1fr 1.18fr 1fr; gap: 10px; align-items: end; margin-bottom: 16px; }
+  .pod { background: #fff; border: 1px solid #EFE6D4; border-radius: 20px; padding: 14px 10px; text-align: center; box-shadow: 0 4px 14px -4px rgba(40,30,60,0.05); }
+  .pod.first { border-color: rgba(255,199,74,0.5); background: linear-gradient(180deg, rgba(255,199,74,0.16) 0%, rgba(255,255,255,0) 100%); }
+  .pod img { width: 80px; height: 80px; border-radius: 50%; }
+  .pod.first img { width: 96px; height: 96px; }
+  .pod .rk { font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 18px; margin-top: 8px; }
+  .pod.first .rk { color: #C99100; }
+  .pod .nm { font-size: 13px; font-weight: 700; margin-top: 2px; }
+  .pod .mt { font-size: 11px; color: #A39DB0; margin-top: 1px; font-weight: 500; }
+  .lb-list { display: flex; flex-direction: column; gap: 8px; }
+  .lb-row { display: grid; grid-template-columns: 32px 1fr auto auto; align-items: center; gap: 14px; background: #fff; border: 1px solid #EFE6D4; border-radius: 16px; padding: 12px 16px; box-shadow: 0 1px 3px rgba(40,30,60,0.03); }
+  .lb-row.you { border-color: rgba(0,82,255,0.4); background: #E8F0FF; }
+  .lb-row .rk { font-family: 'Space Grotesk', sans-serif; font-size: 14px; font-weight: 700; color: #A39DB0; }
+  .lb-row.you .rk { color: #0052FF; }
+  .lb-row .nm { font-size: 14px; font-weight: 700; }
+  .lb-lvl { background: #E8F0FF; color: #0052FF; border-radius: 9px; padding: 5px 11px; font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 12px; }
+  .lb-strk { font-size: 13px; color: #FF8E72; font-weight: 700; }
+</style>
+</head>
+<body>
+
+<!-- 1) HOME -->
+<div class="screen" id="home">
+  <div class="sb"><span>9:41</span><span class="icons">●●● 􀙇 100%</span></div>
+  <div class="h-row">
+    <div class="logo"><div class="logo-dot"></div>BaseQuiz</div>
+    <div class="wallet">vitalik.base · 0x4A...e2F</div>
+  </div>
+  <div class="greeting">
+    <div class="lbl">Welcome back</div>
+    <div class="nm">vitalik.base 👋</div>
+  </div>
+  <div class="hero">
+    <img src="https://basequiz-three.vercel.app/badges/lvl10.png" />
+    <div class="lvl-tag">LEVEL 10</div>
+    <div class="lvl-nm">Block Builder</div>
+    <div class="strk">
+      <span>🔥 Streak</span>
+      <div class="dots">
+        <span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span>
+      </div>
+      <span>3/5 to L11</span>
+    </div>
+    <button class="cta">Continue Learning →</button>
+  </div>
+  <div class="stats3">
+    <div class="stat"><div class="v">47</div><div class="l">Correct</div></div>
+    <div class="stat"><div class="v">88%</div><div class="l">Accuracy</div></div>
+    <div class="stat"><div class="v">12</div><div class="l">Best Streak</div></div>
+  </div>
+  <div class="section-title"><span class="t">Recent achievements</span><span class="m">View all</span></div>
+  <div class="recents">
+    <div class="r"><img src="https://basequiz-three.vercel.app/badges/lvl1.png"/></div>
+    <div class="r"><img src="https://basequiz-three.vercel.app/badges/lvl5.png"/></div>
+    <div class="r"><img src="https://basequiz-three.vercel.app/badges/lvl10.png"/></div>
+    <div class="r locked"><img src="https://basequiz-three.vercel.app/badges/lvl15.png"/></div>
+  </div>
+</div>
+
+<!-- 2) QUIZ -->
+<div class="screen" id="quiz">
+  <div class="sb"><span>9:42</span><span class="icons">●●● 􀙇 100%</span></div>
+  <div class="h-row">
+    <div class="logo"><div class="logo-dot"></div>BaseQuiz</div>
+    <div class="wallet">L10 · 🔥 3</div>
+  </div>
+  <span class="chip">⬡ Base Account · Smart Wallet</span>
+  <div class="q-counter">Question 24 of 100 · streak progress 3/5</div>
+  <div class="dots" style="margin-top:10px;">
+    <span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span>
+  </div>
+  <div class="q-text">Which Base Account capability lets dApps schedule recurring USDC payments without re-prompting the user?</div>
+  <div class="answers">
+    <div class="ans"><span class="letter">A</span>auxiliaryFunds</div>
+    <div class="ans"><span class="letter">B</span>wallet_sendCalls</div>
+    <div class="ans selected"><span class="letter">C</span>Spend Permissions</div>
+    <div class="ans"><span class="letter">D</span>paymasterService</div>
+  </div>
+  <div class="gas">
+    <span>⛽ Estimated gas</span>
+    <span class="v">~$0.0001 · Base Mainnet</span>
+  </div>
+  <button class="cta">Sign &amp; Submit Answer →</button>
+</div>
+
+<!-- 3) PROFILE -->
+<div class="screen" id="profile">
+  <div class="sb"><span>9:43</span><span class="icons">●●● 􀙇 100%</span></div>
+  <div class="h-row">
+    <div class="logo"><div class="logo-dot"></div>BaseQuiz</div>
+    <div class="wallet" style="padding:8px 14px;">↗ Share</div>
+  </div>
+  <div class="prof-hero">
+    <img src="https://basequiz-three.vercel.app/badges/lvl10.png"/>
+    <div class="handle">vitalik.base</div>
+    <div class="addr">0x4A1f...e2F8 · joined Apr 18</div>
+  </div>
+  <div class="stats4">
+    <div class="stat4 blue"><div class="v">Lvl 10</div><div class="l">Block Builder</div></div>
+    <div class="stat4 mint"><div class="v">88%</div><div class="l">Accuracy 47/53</div></div>
+    <div class="stat4 peach"><div class="v">🔥 3</div><div class="l">Current streak</div></div>
+    <div class="stat4 yellow"><div class="v">⭐ 12</div><div class="l">Best streak</div></div>
+  </div>
+  <div class="section-title"><span class="t">Achievements · 10/20</span><span class="m">All</span></div>
+  <div class="ach-grid">
+    <div class="ach"><img src="https://basequiz-three.vercel.app/badges/lvl1.png"/></div>
+    <div class="ach"><img src="https://basequiz-three.vercel.app/badges/lvl2.png"/></div>
+    <div class="ach"><img src="https://basequiz-three.vercel.app/badges/lvl3.png"/></div>
+    <div class="ach"><img src="https://basequiz-three.vercel.app/badges/lvl4.png"/></div>
+    <div class="ach"><img src="https://basequiz-three.vercel.app/badges/lvl5.png"/></div>
+    <div class="ach"><img src="https://basequiz-three.vercel.app/badges/lvl6.png"/></div>
+    <div class="ach"><img src="https://basequiz-three.vercel.app/badges/lvl7.png"/></div>
+    <div class="ach"><img src="https://basequiz-three.vercel.app/badges/lvl8.png"/></div>
+    <div class="ach"><img src="https://basequiz-three.vercel.app/badges/lvl9.png"/></div>
+    <div class="ach"><img src="https://basequiz-three.vercel.app/badges/lvl10.png"/></div>
+    <div class="ach locked"><img src="https://basequiz-three.vercel.app/badges/lvl11.png"/></div>
+    <div class="ach locked"><img src="https://basequiz-three.vercel.app/badges/lvl12.png"/></div>
+    <div class="ach locked"><img src="https://basequiz-three.vercel.app/badges/lvl13.png"/></div>
+    <div class="ach locked"><img src="https://basequiz-three.vercel.app/badges/lvl14.png"/></div>
+    <div class="ach locked"><img src="https://basequiz-three.vercel.app/badges/lvl15.png"/></div>
+  </div>
+</div>
+
+<!-- 4) RANKS -->
+<div class="screen" id="ranks">
+  <div class="sb"><span>9:44</span><span class="icons">●●● 􀙇 100%</span></div>
+  <div class="h-row">
+    <div class="logo"><div class="logo-dot"></div>BaseQuiz</div>
+    <div class="wallet">L10 · 🔥 3</div>
+  </div>
+  <div class="lb-tabs">
+    <div class="lb-tab active">Global</div>
+    <div class="lb-tab">Weekly</div>
+    <div class="lb-tab">Friends</div>
+  </div>
+  <div class="podium">
+    <div class="pod">
+      <img src="https://basequiz-three.vercel.app/badges/lvl19.png"/>
+      <div class="rk">#2</div>
+      <div class="nm">jesse.base</div>
+      <div class="mt">L19 · 🔥 41</div>
+    </div>
+    <div class="pod first">
+      <img src="https://basequiz-three.vercel.app/badges/lvl20.png"/>
+      <div class="rk">🏆 #1</div>
+      <div class="nm">brian.base</div>
+      <div class="mt">L20 · 🔥 87</div>
+    </div>
+    <div class="pod">
+      <img src="https://basequiz-three.vercel.app/badges/lvl18.png"/>
+      <div class="rk">#3</div>
+      <div class="nm">linda.base</div>
+      <div class="mt">L18 · 🔥 38</div>
+    </div>
+  </div>
+  <div class="lb-list">
+    <div class="lb-row">
+      <span class="rk">04</span><div class="nm">salman.base</div>
+      <span class="lb-lvl">L17</span><span class="lb-strk">🔥 31</span>
+    </div>
+    <div class="lb-row">
+      <span class="rk">05</span><div class="nm">dmitry.base</div>
+      <span class="lb-lvl">L15</span><span class="lb-strk">🔥 28</span>
+    </div>
+    <div class="lb-row">
+      <span class="rk">06</span><div class="nm">degenmom</div>
+      <span class="lb-lvl">L14</span><span class="lb-strk">🔥 22</span>
+    </div>
+    <div class="lb-row">
+      <span class="rk">07</span><div class="nm">onchain.eth</div>
+      <span class="lb-lvl">L13</span><span class="lb-strk">🔥 18</span>
+    </div>
+    <div class="lb-row you">
+      <span class="rk">42</span><div class="nm">vitalik.base · YOU</div>
+      <span class="lb-lvl">L10</span><span class="lb-strk">🔥 3</span>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
