@@ -20,25 +20,36 @@ export async function GET(_req: NextRequest, ctx: { params: { address: string } 
 
   const ids = questions.map((q) => q.id);
 
+  // Build the contract lists once
+  const solvedCalls = ids.map((id) => ({
+    address: QUIZ_ADDRESS, abi: QUIZ_ABI,
+    functionName: 'solved' as const, args: [user, id] as const,
+  }));
+  const lockoutCalls = ids.map((id) => ({
+    address: QUIZ_ADDRESS, abi: QUIZ_ABI,
+    functionName: 'lockoutUntil' as const, args: [user, id] as const,
+  }));
+
+  // Public Base RPC sometimes returns partial multicall results; chunk to 25 calls
+  // per request to keep responses small and avoid silent drops.
+  async function chunkedMulticall<T extends typeof solvedCalls | typeof lockoutCalls>(calls: T) {
+    const out: Array<{ result?: any; status: 'success' | 'failure' }> = [];
+    const CHUNK = 25;
+    for (let i = 0; i < calls.length; i += CHUNK) {
+      const slice = calls.slice(i, i + CHUNK);
+      const r = await publicRpc.multicall({ contracts: slice as any, allowFailure: true });
+      out.push(...(r as any));
+    }
+    return out;
+  }
+
   const [state, solvedResults, lockoutResults] = await Promise.all([
     publicRpc.readContract({
       address: QUIZ_ADDRESS, abi: QUIZ_ABI,
       functionName: 'getUserState', args: [user],
     }),
-    publicRpc.multicall({
-      contracts: ids.map((id) => ({
-        address: QUIZ_ADDRESS, abi: QUIZ_ABI,
-        functionName: 'solved' as const, args: [user, id] as const,
-      })),
-      allowFailure: true,
-    }),
-    publicRpc.multicall({
-      contracts: ids.map((id) => ({
-        address: QUIZ_ADDRESS, abi: QUIZ_ABI,
-        functionName: 'lockoutUntil' as const, args: [user, id] as const,
-      })),
-      allowFailure: true,
-    }),
+    chunkedMulticall(solvedCalls),
+    chunkedMulticall(lockoutCalls),
   ]);
 
   const now = Math.floor(Date.now() / 1000);

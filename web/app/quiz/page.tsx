@@ -105,6 +105,10 @@ export default function QuizPage() {
         abi:          QUIZ_ABI,
         functionName: 'submitAnswer',
         args: [v.user, v.questionId, v.correct, v.nonce, v.deadline, v.signature],
+        // Override gas: a normal answer is ~90k, but the 5th-in-a-streak
+        // also writes an EAS attestation (~355k). Use 500k as a safe upper bound;
+        // unused gas refunded, no UX impact.
+        gas: 500_000n,
       });
       setPhase('result');
     } catch (e: any) {

@@ -19,15 +19,21 @@ const LEVEL_UP_EVENT = parseAbiItem(
 );
 
 export async function GET(_req: NextRequest) {
-  // Pull all LevelUp events from deploy block to latest.
-  // For a denser project a subgraph or scheduled cron->KV is appropriate; this is fine for MVP.
-  const latest = await publicRpc.getBlockNumber();
-  const logs = await publicRpc.getLogs({
-    address:   QUIZ_ADDRESS,
-    event:     LEVEL_UP_EVENT,
-    fromBlock: DEPLOY_BLOCK,
-    toBlock:   latest,
-  });
+  // Pull all LevelUp events from deploy block to latest in chunks (public Base RPC
+  // limits eth_getLogs block range; ~10k blocks per request is safe).
+  const latest    = await publicRpc.getBlockNumber();
+  const CHUNK     = 9000n;
+  const logs: Awaited<ReturnType<typeof publicRpc.getLogs>> = [];
+  for (let from = DEPLOY_BLOCK; from <= latest; from += CHUNK + 1n) {
+    const to = from + CHUNK > latest ? latest : from + CHUNK;
+    const chunk = await publicRpc.getLogs({
+      address:   QUIZ_ADDRESS,
+      event:     LEVEL_UP_EVENT,
+      fromBlock: from,
+      toBlock:   to,
+    });
+    logs.push(...chunk);
+  }
 
   // Per user keep their latest level + totalCorrect.
   type Row = { user: `0x${string}`; level: number; totalCorrect: number; lastBlock: bigint };
